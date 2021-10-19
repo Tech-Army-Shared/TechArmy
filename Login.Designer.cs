@@ -39,6 +39,7 @@ namespace TechArmy
             this.lblIAm = new System.Windows.Forms.Label();
             this.cmbUserType = new System.Windows.Forms.ComboBox();
             this.lblClose = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblLogin
@@ -144,12 +145,22 @@ namespace TechArmy
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.label1_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(-16, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(318, 262);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.cmbUserType);
             this.Controls.Add(this.lblIAm);
@@ -181,5 +192,6 @@ namespace TechArmy
         private System.Windows.Forms.Label lblIAm;
         private System.Windows.Forms.ComboBox cmbUserType;
         private System.Windows.Forms.Label lblClose;
+        private System.Windows.Forms.Button button1;
     }
 }
