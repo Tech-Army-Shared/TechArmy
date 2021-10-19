@@ -25,7 +25,7 @@ namespace TechArmy
 
         private void btnProceed_Click(object sender, EventArgs e)
         {
-            userLogin();
+            userLogin();//call method
         }
 
         private void userLogin() {
