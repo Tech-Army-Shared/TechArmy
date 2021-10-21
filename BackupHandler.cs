@@ -15,8 +15,18 @@ namespace TechArmy
         private const string PathToServiceAccountKeyFile = "Credentials.json";
         private const string ServiceAccountEmail = "techarmy@indigo-night-329123.iam.gserviceaccount.com";
         private const string UploadFileName = "example.txt";
+        private string timeStamp;
+
 
         static string[] Scopes = { DriveService.ScopeConstants.Drive };
+
+        public BackupHandler(DateTime time)
+        {
+            //This constructor takes the timestamp and transforms it into a properly formatted timestamp
+            //to label the backup files with
+            timeStamp = time.ToString("dddd, dd MMMM yyyy HH:mm:ss");
+        }
+
         public async Task FileUploadAsync()
         {
             //credentials variable
@@ -45,7 +55,7 @@ namespace TechArmy
             //This is an abstract method for file metadata
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = "Test hello uploaded.txt",
+                Name = "Test hello uploaded.txt"
 
                 //Uncomment this code if you want to put the file into a folder and specify the folder ID
                 //Parents = new List<string>() { FolderID }

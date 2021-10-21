@@ -17,16 +17,13 @@ namespace TechArmy
         
         {
             Program prog = new Program();
-            //Thread thread1 = new Thread(new ThreadStart(prog.timedBackup));
+            Thread thread1 = new Thread(new ThreadStart(prog.timedBackup));
             
 
-            //Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //thread1.Start();
-            //Application.Run(new Splash_Screen());
-
-            BackupHandler backup = new BackupHandler();
-            Task.Run(() => backup.FileUploadAsync()).Wait();
+            thread1.Start();
+            Application.Run(new Splash_Screen());
 
         }
         public void timedBackup()
@@ -40,7 +37,7 @@ namespace TechArmy
                 if (time.TimeOfDay >= backupTime.TimeOfDay)
                 {
                     //INSERT BACKUP OBJECT HERE
-                    BackupHandler backup= new BackupHandler();
+                    BackupHandler backup= new BackupHandler(time);
                     Task.Run(() => backup.FileUploadAsync()).Wait();
 
                     //Do not modify
