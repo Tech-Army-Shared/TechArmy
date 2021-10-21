@@ -111,7 +111,7 @@ namespace TechArmy
                 }
            
             
-            }catch(NullReferenceException e) { }
+            }catch(NullReferenceException e) { throw e; }
 
            
         }

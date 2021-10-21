@@ -63,6 +63,16 @@ namespace TechArmy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background_Image {
+            get {
+                object obj = ResourceManager.GetObject("Background Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TechArmyBio4 {
             get {
                 object obj = ResourceManager.GetObject("TechArmyBio4", resourceCulture);

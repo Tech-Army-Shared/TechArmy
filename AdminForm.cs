@@ -251,9 +251,10 @@ namespace TechArmy
         private int sendData()
         {
             
-            String IDrecieved = userID, currentID = txtFingerID.Text;
-            bool error = false;
-           if (true)        //if text mode is selected, send data as tex
+           String IDrecieved = userID, currentID = txtFingerID.Text;
+           bool error = false;
+           
+            if (true)        //if text mode is selected, send data as tex
             {
                 // Send the user's text straight out the port 
                 ComPort.Write("r");

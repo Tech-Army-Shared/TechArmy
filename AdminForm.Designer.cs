@@ -29,7 +29,7 @@ namespace TechArmy
         /// </summary>
         private void InitializeComponent()
         {
-            this.Menu = new System.Windows.Forms.TabControl();
+            this.MainMenu = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.btnConnect = new System.Windows.Forms.Button();
@@ -37,6 +37,7 @@ namespace TechArmy
             this.cmbPortName = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnFinger = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtDataArea = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -62,27 +63,26 @@ namespace TechArmy
             this.txtFirstname = new System.Windows.Forms.TextBox();
             this.lblFirstname = new System.Windows.Forms.Label();
             this.lblLogout = new System.Windows.Forms.Label();
-            this.btnFinger = new System.Windows.Forms.Button();
-            this.Menu.SuspendLayout();
+            this.MainMenu.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.GenderGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Menu
+            // MainMenu
             // 
-            this.Menu.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.Menu.Controls.Add(this.tabPage1);
-            this.Menu.Controls.Add(this.tabPage2);
-            this.Menu.Controls.Add(this.tabPage3);
-            this.Menu.Location = new System.Drawing.Point(10, 29);
-            this.Menu.Multiline = true;
-            this.Menu.Name = "Menu";
-            this.Menu.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Menu.SelectedIndex = 0;
-            this.Menu.Size = new System.Drawing.Size(710, 419);
-            this.Menu.TabIndex = 0;
+            this.MainMenu.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.MainMenu.Controls.Add(this.tabPage1);
+            this.MainMenu.Controls.Add(this.tabPage2);
+            this.MainMenu.Controls.Add(this.tabPage3);
+            this.MainMenu.Location = new System.Drawing.Point(10, 29);
+            this.MainMenu.Multiline = true;
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.MainMenu.SelectedIndex = 0;
+            this.MainMenu.Size = new System.Drawing.Size(710, 419);
+            this.MainMenu.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -179,6 +179,16 @@ namespace TechArmy
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Register";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnFinger
+            // 
+            this.btnFinger.Location = new System.Drawing.Point(335, 157);
+            this.btnFinger.Name = "btnFinger";
+            this.btnFinger.Size = new System.Drawing.Size(75, 23);
+            this.btnFinger.TabIndex = 42;
+            this.btnFinger.Text = "Enroll User";
+            this.btnFinger.UseVisualStyleBackColor = true;
+            this.btnFinger.Click += new System.EventHandler(this.btnFinger_Click);
             // 
             // btnRegister
             // 
@@ -410,16 +420,6 @@ namespace TechArmy
             this.lblLogout.Text = "Logout";
             this.lblLogout.Click += new System.EventHandler(this.lblLogout_Click);
             // 
-            // btnFinger
-            // 
-            this.btnFinger.Location = new System.Drawing.Point(335, 157);
-            this.btnFinger.Name = "btnFinger";
-            this.btnFinger.Size = new System.Drawing.Size(75, 23);
-            this.btnFinger.TabIndex = 42;
-            this.btnFinger.Text = "Enroll Finger";
-            this.btnFinger.UseVisualStyleBackColor = true;
-            this.btnFinger.Click += new System.EventHandler(this.btnFinger_Click);
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,12 +427,12 @@ namespace TechArmy
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(736, 463);
             this.Controls.Add(this.lblLogout);
-            this.Controls.Add(this.Menu);
+            this.Controls.Add(this.MainMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
-            this.Menu.ResumeLayout(false);
+            this.MainMenu.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -448,7 +448,7 @@ namespace TechArmy
 
         #endregion
 
-        private System.Windows.Forms.TabControl Menu;
+        private System.Windows.Forms.TabControl MainMenu;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
