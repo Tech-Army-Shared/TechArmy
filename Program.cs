@@ -28,7 +28,27 @@ namespace TechArmy
         }
         public void timedBackup()
         {
+            var backupTime = new DateTime(9999, 10, 20,  20, 0, 0);
+            var time = DateTime.Now;
+            bool e = true;
             
+            while(e)
+            {
+                if (time.TimeOfDay >= backupTime.TimeOfDay)
+                {
+                    //INSERT BACKUP OBJECT HERE
+
+                    
+                    //Do not modify
+                    e = false;
+                }
+                else
+                {
+                    //Sleep thread for 10 minutes
+                    Thread.Sleep(600000);
+                }
+            }
+
         }
     }
 }

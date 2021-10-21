@@ -122,7 +122,8 @@ namespace TechArmy
         {
             DateTime now = DateTime.Now;
 
-            string strDate = $"{now:dd/MM/yy}"; string strDateTime = $"{now:hh:mm:ss}";
+            string strDate = $"{now:dd/MM/yy}"; 
+            string strDateTime = $"{now:hh:mm:ss}";
 
             string stm = "SELECT * FROM registration WHERE fingerID ='" + userID + "'";
             SetConnection();
@@ -278,6 +279,11 @@ namespace TechArmy
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtDataArea.Clear();
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
