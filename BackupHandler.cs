@@ -17,22 +17,12 @@ namespace TechArmy
         private const string UploadFileName = "example.txt";
 
         static string[] Scopes = { DriveService.ScopeConstants.Drive };
-        static void Main(string[] args)
-        {
-
-            Program prog = new Program();
-            Task.Run(() => prog.FileUploadAsync()).Wait();
-            //var credential = GoogleCredential.FromFile(PathToServiceAccountKeyFile).CreateScoped(DriveService.ScopeConstants.Drive);
-
-        }
-
         public async Task FileUploadAsync()
         {
             //credentials variable
             UserCredential credential = null;
 
-            using (var stream =
-                new FileStream(PathToServiceAccountKeyFile, FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(PathToServiceAccountKeyFile, FileMode.Open, FileAccess.Read))
             {
                 // The file token.json stores the user's access and refresh tokens, and is created
                 // automatically when the authorization flow completes for the first time.
@@ -63,7 +53,7 @@ namespace TechArmy
 
             string uploadedFileId;
             // Create a new file on Google Drive
-            await using (var fsSource = new FileStream(UploadFileName, FileMode.Open, FileAccess.Read))
+            using (var fsSource = new FileStream(UploadFileName, FileMode.Open, FileAccess.Read))
             {
                 // Create a new file, with metadata and stream.
                 var request = service.Files.Create(fileMetadata, fsSource, "text/plain");
