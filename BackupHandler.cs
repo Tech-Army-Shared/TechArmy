@@ -55,7 +55,7 @@ namespace TechArmy
             //This is an abstract method for file metadata
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = "Test hello uploaded.txt"
+                Name = timeStamp + ".txt"
 
                 //Uncomment this code if you want to put the file into a folder and specify the folder ID
                 //Parents = new List<string>() { FolderID }
