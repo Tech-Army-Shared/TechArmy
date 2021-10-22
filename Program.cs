@@ -30,26 +30,41 @@ namespace TechArmy
         {
             var backupTime = new DateTime(9999, 10, 20,  20, 0, 0);
             var time = DateTime.Now;
-            bool e = true;
+            bool e = false;
             
-            while(e)
+            // e = false if it hasn't backed up yet
+            // e = true if it has backed up
+
+            while(true)
             {
-                if (time.TimeOfDay >= backupTime.TimeOfDay)
+                //This checks if the current time is later than the specified time AND if a backup has occurred
+
+                if (time.TimeOfDay > backupTime.TimeOfDay && e == false)
                 {
-                    //INSERT BACKUP OBJECT HERE
+                    //If it's later than 20:00 and a backup didn't occur
+                    
                     BackupHandler backup= new BackupHandler(time);
                     Task.Run(() => backup.FileUploadAsync()).Wait();
 
-                    //Do not modify
-                    e = false;
+                    e = true;
                 }
-                else
+                else if(time.TimeOfDay > backupTime.TimeOfDay && e == true)
                 {
-                    //Sleep thread for 10 minutes
+                    //If it's later than 20:00 and a backup did occur
                     Thread.Sleep(600000);
                 }
-            }
+                else if (time.TimeOfDay < backupTime.TimeOfDay && e == false)
+                {
+                    //If it's earlier than 20:00 and a backup didn't occur
+                    Thread.Sleep(600000);
+                }
+                else if(time.TimeOfDay < backupTime.TimeOfDay && e == true)
+                {
+                    //If it's earlier than 20:00 and a backup did occur (indicating a new day)
+                    e = false;
+                }
 
+            }
         }
     }
 }
