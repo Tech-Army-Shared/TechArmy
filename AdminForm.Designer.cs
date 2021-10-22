@@ -432,6 +432,7 @@ namespace TechArmy
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
             this.ClientSize = new System.Drawing.Size(736, 463);
             this.Controls.Add(this.lblLogout);
             this.Controls.Add(this.MainMenu);
