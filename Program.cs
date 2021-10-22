@@ -24,7 +24,6 @@ namespace TechArmy
             Application.SetCompatibleTextRenderingDefault(false);
             thread1.Start();
             Application.Run(new Splash_Screen());
-            //Application.Run(new AdminForm());
 
         }
         public void timedBackup()
