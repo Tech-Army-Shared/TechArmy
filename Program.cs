@@ -20,7 +20,7 @@ namespace TechArmy
             Thread thread1 = new Thread(new ThreadStart(prog.timedBackup));
             
 
-            Application.EnableVisualStyles();
+            //Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             thread1.Start();
             Application.Run(new Splash_Screen());
