@@ -19,6 +19,9 @@ namespace TechArmy
             Program prog = new Program();
             Thread thread1 = new Thread(new ThreadStart(prog.timedBackup));
             
+            //This is a temporary measure to ensure that the program does not need to be manually killed
+            //in task manager
+            thread1.IsBackground = false;
 
             //Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
