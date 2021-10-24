@@ -30,22 +30,24 @@ namespace TechArmy
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
-            // 
-            // progressBar
-            // 
-            this.progressBar.ForeColor = System.Drawing.Color.Green;
-            this.progressBar.Location = new System.Drawing.Point(217, 305);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(368, 10);
-            this.progressBar.TabIndex = 0;
-            this.progressBar.Value = 50;
             // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // ProgressBar
+            // 
+            this.ProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.ProgressBar.Location = new System.Drawing.Point(217, 306);
+            this.ProgressBar.Name = "ProgressBar";
+            this.ProgressBar.Size = new System.Drawing.Size(367, 9);
+            this.ProgressBar.Step = 15;
+            this.ProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.ProgressBar.TabIndex = 0;
+            this.ProgressBar.Click += new System.EventHandler(this.ProgressBar_Click);
             // 
             // Splash_Screen
             // 
@@ -54,11 +56,11 @@ namespace TechArmy
             this.BackgroundImage = global::TechArmy.Properties.Resources.TechArmyBio4;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.progressBar);
+            this.ControlBox = false;
+            this.Controls.Add(this.ProgressBar);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Splash_Screen";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Splash_Screen";
             this.Load += new System.EventHandler(this.Splash_Screen_Load);
             this.ResumeLayout(false);
@@ -67,8 +69,7 @@ namespace TechArmy
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ProgressBar ProgressBar;
     }
 }
-

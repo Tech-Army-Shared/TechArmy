@@ -20,20 +20,23 @@ namespace TechArmy
         private void Splash_Screen_Load(object sender, EventArgs e)
         {
             timer.Enabled = true;
-           
-
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            progressBar.Increment(5);
-            if (progressBar.Value == 100)
+            ProgressBar.Increment(5);
+            if (ProgressBar.Value == 100)
             {
                 timer.Enabled = false;
                 Login form = new Login();
                 form.Show();
                 this.Hide();
             }
+        }
+
+        private void ProgressBar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

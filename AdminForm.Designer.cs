@@ -73,27 +73,32 @@ namespace TechArmy
             // MainMenu
             // 
             this.MainMenu.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.MainMenu.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.MainMenu.Controls.Add(this.tabPage1);
             this.MainMenu.Controls.Add(this.tabPage2);
             this.MainMenu.Controls.Add(this.tabPage3);
+            this.MainMenu.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.MainMenu.ItemSize = new System.Drawing.Size(25, 100);
             this.MainMenu.Location = new System.Drawing.Point(10, 29);
             this.MainMenu.Multiline = true;
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.MainMenu.SelectedIndex = 0;
             this.MainMenu.Size = new System.Drawing.Size(710, 419);
+            this.MainMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.MainMenu.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.btnConnect);
             this.tabPage1.Controls.Add(this.btnRefresh);
             this.tabPage1.Controls.Add(this.cmbPortName);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(104, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(702, 393);
+            this.tabPage1.Size = new System.Drawing.Size(602, 411);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Connect";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -141,10 +146,11 @@ namespace TechArmy
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
+            this.tabPage2.Location = new System.Drawing.Point(104, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(702, 393);
+            this.tabPage2.Size = new System.Drawing.Size(602, 411);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Clocks";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -153,6 +159,7 @@ namespace TechArmy
             // 
             this.tabPage3.AllowDrop = true;
             this.tabPage3.AutoScroll = true;
+            this.tabPage3.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
             this.tabPage3.Controls.Add(this.btnFinger);
             this.tabPage3.Controls.Add(this.btnRegister);
             this.tabPage3.Controls.Add(this.txtDataArea);
@@ -172,10 +179,10 @@ namespace TechArmy
             this.tabPage3.Controls.Add(this.lblSurname);
             this.tabPage3.Controls.Add(this.txtFirstname);
             this.tabPage3.Controls.Add(this.lblFirstname);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(104, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(702, 393);
+            this.tabPage3.Size = new System.Drawing.Size(602, 411);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Register";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -425,6 +432,7 @@ namespace TechArmy
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
             this.ClientSize = new System.Drawing.Size(736, 463);
             this.Controls.Add(this.lblLogout);
             this.Controls.Add(this.MainMenu);
@@ -432,6 +440,7 @@ namespace TechArmy
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.AdminForm_Load);
             this.MainMenu.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

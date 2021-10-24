@@ -24,31 +24,47 @@ namespace TechArmy
             Application.SetCompatibleTextRenderingDefault(false);
             thread1.Start();
             Application.Run(new Splash_Screen());
-   
+
         }
         public void timedBackup()
         {
             var backupTime = new DateTime(9999, 10, 20,  20, 0, 0);
             var time = DateTime.Now;
-            bool e = true;
+            bool e = false;
             
-            while(e)
-            {
-                if (time.TimeOfDay >= backupTime.TimeOfDay)
-                {
-                    //INSERT BACKUP OBJECT HERE
+            // e = false if it hasn't backed up yet
+            // e = true if it has backed up
 
-                    
-                    //Do not modify
-                    e = false;
-                }
-                else
+            while(true)
+            {
+                //This checks if the current time is later than the specified time AND if a backup has occurred
+
+                if (time.TimeOfDay > backupTime.TimeOfDay && e == false)
                 {
-                    //Sleep thread for 10 minutes
+                    //If it's later than 20:00 and a backup didn't occur
+                    
+                    BackupHandler backup= new BackupHandler(time);
+                    Task.Run(() => backup.FileUploadAsync()).Wait();
+
+                    e = true;
+                }
+                else if(time.TimeOfDay > backupTime.TimeOfDay && e == true)
+                {
+                    //If it's later than 20:00 and a backup did occur
                     Thread.Sleep(600000);
                 }
-            }
+                else if (time.TimeOfDay < backupTime.TimeOfDay && e == false)
+                {
+                    //If it's earlier than 20:00 and a backup didn't occur
+                    Thread.Sleep(600000);
+                }
+                else if(time.TimeOfDay < backupTime.TimeOfDay && e == true)
+                {
+                    //If it's earlier than 20:00 and a backup did occur (indicating a new day)
+                    e = false;
+                }
 
+            }
         }
     }
 }
