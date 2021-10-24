@@ -13,9 +13,8 @@ namespace TechArmy
     class BackupHandler
     {
         private const string PathToServiceAccountKeyFile = "Credentials.json";
-        private const string ServiceAccountEmail = "techarmy@indigo-night-329123.iam.gserviceaccount.com";
         private const string UploadFileName = "backup.txt";
-        private string timeStamp;
+        private readonly string timeStamp;
 
 
         static string[] Scopes = { DriveService.ScopeConstants.Drive };
@@ -30,7 +29,7 @@ namespace TechArmy
 
         public async Task FileUploadAsync()
         {
-            //credentials variable
+            // credentials variable
             UserCredential credential = null;
 
             using (var stream = new FileStream(PathToServiceAccountKeyFile, FileMode.Open, FileAccess.Read))
@@ -58,7 +57,8 @@ namespace TechArmy
             {
                 Name = timeStamp + ".txt"
 
-                //Uncomment this code if you want to put the file into a folder and specify the folder ID
+                // Uncomment this code if you want to put the file into a folder and specify the folder ID
+                // You will have to create the folder before-hand on Drive and take its ID key for it to work
                 //Parents = new List<string>() { FolderID }
             };
 
