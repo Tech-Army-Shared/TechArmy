@@ -14,7 +14,7 @@ namespace TechArmy
     {
         private const string PathToServiceAccountKeyFile = "Credentials.json";
         private const string ServiceAccountEmail = "techarmy@indigo-night-329123.iam.gserviceaccount.com";
-        private const string UploadFileName = "example.txt";
+        private const string UploadFileName = "backup.txt";
         private string timeStamp;
 
 
@@ -25,6 +25,7 @@ namespace TechArmy
             //This constructor takes the timestamp and transforms it into a properly formatted timestamp
             //to label the backup files with
             timeStamp = time.ToString("dddd, dd MMMM yyyy HH:mm:ss");
+
         }
 
         public async Task FileUploadAsync()
