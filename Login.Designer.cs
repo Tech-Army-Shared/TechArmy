@@ -44,6 +44,7 @@ namespace TechArmy
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;
+            this.lblLogin.BackColor = System.Drawing.Color.Transparent;
             this.lblLogin.Font = new System.Drawing.Font("Yu Gothic Medium", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblLogin.Location = new System.Drawing.Point(100, 9);
@@ -55,11 +56,11 @@ namespace TechArmy
             // btnProceed
             // 
             this.btnProceed.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProceed.Location = new System.Drawing.Point(44, 205);
+            this.btnProceed.Location = new System.Drawing.Point(39, 205);
             this.btnProceed.Name = "btnProceed";
-            this.btnProceed.Size = new System.Drawing.Size(99, 45);
+            this.btnProceed.Size = new System.Drawing.Size(104, 45);
             this.btnProceed.TabIndex = 3;
-            this.btnProceed.Text = "proceed";
+            this.btnProceed.Text = "Proceed";
             this.btnProceed.UseVisualStyleBackColor = true;
             this.btnProceed.Click += new System.EventHandler(this.btnProceed_Click);
             // 
@@ -70,7 +71,7 @@ namespace TechArmy
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(101, 45);
             this.btnClear.TabIndex = 4;
-            this.btnClear.Text = "clear";
+            this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -92,6 +93,7 @@ namespace TechArmy
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
+            this.lblUsername.BackColor = System.Drawing.Color.Transparent;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblUsername.Location = new System.Drawing.Point(12, 122);
@@ -103,6 +105,7 @@ namespace TechArmy
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
+            this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblPassword.Location = new System.Drawing.Point(12, 169);
@@ -114,6 +117,7 @@ namespace TechArmy
             // lblIAm
             // 
             this.lblIAm.AutoSize = true;
+            this.lblIAm.BackColor = System.Drawing.Color.Transparent;
             this.lblIAm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIAm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblIAm.Location = new System.Drawing.Point(23, 75);
@@ -136,6 +140,7 @@ namespace TechArmy
             // lblClose
             // 
             this.lblClose.AutoSize = true;
+            this.lblClose.BackColor = System.Drawing.Color.Transparent;
             this.lblClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblClose.Location = new System.Drawing.Point(289, 9);
             this.lblClose.Name = "lblClose";
@@ -148,7 +153,8 @@ namespace TechArmy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
             this.ClientSize = new System.Drawing.Size(318, 262);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.cmbUserType);
