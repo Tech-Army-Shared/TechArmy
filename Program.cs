@@ -32,7 +32,7 @@ namespace TechArmy
         public void timedBackup()
         {
             var backupTime = new DateTime(9999, 10, 20,  20, 0, 0);
-            var time = DateTime.Now;
+            DateTime time;
             bool e = false;
             
             // e = false if it hasn't backed up yet
@@ -40,6 +40,8 @@ namespace TechArmy
 
             while(true)
             {
+                time = DateTime.Now;
+
                 //This checks if the current time is later than the specified time AND if a backup has occurred
 
                 if (time.TimeOfDay > backupTime.TimeOfDay && e == false)

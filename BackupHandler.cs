@@ -38,7 +38,7 @@ namespace TechArmy
                 // automatically when the authorization flow completes for the first time.
                 string credPath = "token.json";
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.FromStream(stream).Secrets,
+                    GoogleClientSedcrets.FromStream(stream).Secrets,
                     Scopes,
                     "user",
                     CancellationToken.None,
