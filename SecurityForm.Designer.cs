@@ -36,17 +36,19 @@ namespace TechArmy
             this.btnRefresh = new System.Windows.Forms.Button();
             this.cmbPortName = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtEmployee_ID = new System.Windows.Forms.TextBox();
             this.txtDataArea = new System.Windows.Forms.RichTextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.txtReasonArea = new System.Windows.Forms.TextBox();
             this.lblLogout = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -116,12 +118,12 @@ namespace TechArmy
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox8);
-            this.tabPage2.Controls.Add(this.textBox7);
-            this.tabPage2.Controls.Add(this.button7);
-            this.tabPage2.Controls.Add(this.btnClear);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.txtEmployee_ID);
             this.tabPage2.Controls.Add(this.txtDataArea);
             this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -130,64 +132,77 @@ namespace TechArmy
             this.tabPage2.Text = "Clocks";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBox8
+            // label3
             // 
-            this.textBox8.Location = new System.Drawing.Point(200, 79);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(176, 20);
-            this.textBox8.TabIndex = 42;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(200, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(293, 46);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Employee_ID#";
             // 
-            // textBox7
+            // txtEmployee_ID
             // 
-            this.textBox7.Location = new System.Drawing.Point(200, 49);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(176, 20);
-            this.textBox7.TabIndex = 41;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(200, 6);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 40;
-            this.button7.Text = "Select";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(301, 6);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 39;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.txtEmployee_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmployee_ID.Location = new System.Drawing.Point(493, 23);
+            this.txtEmployee_ID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmployee_ID.Multiline = true;
+            this.txtEmployee_ID.Name = "txtEmployee_ID";
+            this.txtEmployee_ID.Size = new System.Drawing.Size(50, 46);
+            this.txtEmployee_ID.TabIndex = 41;
             // 
             // txtDataArea
             // 
             this.txtDataArea.AutoWordSelection = true;
             this.txtDataArea.BackColor = System.Drawing.SystemColors.Window;
             this.txtDataArea.ForeColor = System.Drawing.Color.Lime;
-            this.txtDataArea.Location = new System.Drawing.Point(389, 6);
+            this.txtDataArea.Location = new System.Drawing.Point(7, 7);
             this.txtDataArea.Margin = new System.Windows.Forms.Padding(4);
             this.txtDataArea.Name = "txtDataArea";
             this.txtDataArea.ReadOnly = true;
-            this.txtDataArea.Size = new System.Drawing.Size(268, 103);
+            this.txtDataArea.Size = new System.Drawing.Size(186, 106);
             this.txtDataArea.TabIndex = 17;
             this.txtDataArea.Text = "";
+            this.txtDataArea.TextChanged += new System.EventHandler(this.txtDataArea_TextChanged);
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(4, 118);
+            this.dataGridView2.Location = new System.Drawing.Point(4, 136);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(780, 266);
+            this.dataGridView2.Size = new System.Drawing.Size(780, 248);
             this.dataGridView2.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnSubmit);
+            this.groupBox1.Controls.Add(this.txtReasonArea);
+            this.groupBox1.Location = new System.Drawing.Point(544, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(240, 123);
+            this.groupBox1.TabIndex = 46;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Reason";
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(72, 94);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 43;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // txtReasonArea
+            // 
+            this.txtReasonArea.Location = new System.Drawing.Point(6, 17);
+            this.txtReasonArea.Multiline = true;
+            this.txtReasonArea.Name = "txtReasonArea";
+            this.txtReasonArea.Size = new System.Drawing.Size(228, 72);
+            this.txtReasonArea.TabIndex = 44;
             // 
             // lblLogout
             // 
@@ -205,19 +220,22 @@ namespace TechArmy
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(816, 450);
+            this.ClientSize = new System.Drawing.Size(823, 450);
             this.Controls.Add(this.lblLogout);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SecurityForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SecurityForm";
+            this.Load += new System.EventHandler(this.SecurityForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,11 +251,12 @@ namespace TechArmy
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ComboBox cmbPortName;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.TextBox txtEmployee_ID;
         private System.Windows.Forms.RichTextBox txtDataArea;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox txtReasonArea;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
     }
 }
