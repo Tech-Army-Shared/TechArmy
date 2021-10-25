@@ -243,7 +243,7 @@ namespace TechArmy
             this.Name = "SecurityForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SecurityForm";
-            this.Load += new System.EventHandler(this.SecurityForm_Load);
+        //    this.Load += new System.EventHandler(this.SecurityForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

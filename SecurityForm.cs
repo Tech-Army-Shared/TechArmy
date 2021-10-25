@@ -436,10 +436,6 @@ namespace TechArmy
 
         }
 
-        private void SecurityForm_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void tabControl1_DrawItem(Object sender, DrawItemEventArgs e)
         {
