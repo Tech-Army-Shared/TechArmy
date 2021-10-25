@@ -29,15 +29,29 @@ namespace TechArmy
         /// </summary>
         private void InitializeComponent()
         {
+
+            this.components = new System.ComponentModel.Container();
+
             this.MainMenu = new System.Windows.Forms.TabControl();
+
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.cmbPortName = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtEmployee_ID = new System.Windows.Forms.TextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.txtReasonArea = new System.Windows.Forms.TextBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnFinger = new System.Windows.Forms.Button();
+
+            this.cmbFingerID = new System.Windows.Forms.ComboBox();
+
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtDataArea = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -47,7 +61,6 @@ namespace TechArmy
             this.txtUserPassword = new System.Windows.Forms.TextBox();
             this.txtCellNumber = new System.Windows.Forms.TextBox();
             this.lblCellNumber = new System.Windows.Forms.Label();
-            this.txtFingerID = new System.Windows.Forms.TextBox();
             this.lblFingerID = new System.Windows.Forms.Label();
             this.GenderGroupBox = new System.Windows.Forms.GroupBox();
             this.rbtnFemale = new System.Windows.Forms.RadioButton();
@@ -63,11 +76,19 @@ namespace TechArmy
             this.txtFirstname = new System.Windows.Forms.TextBox();
             this.lblFirstname = new System.Windows.Forms.Label();
             this.lblLogout = new System.Windows.Forms.Label();
+
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+
             this.MainMenu.SuspendLayout();
+
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.GenderGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenu
@@ -146,8 +167,18 @@ namespace TechArmy
             // 
             // tabPage2
             // 
+
+            this.tabPage2.Controls.Add(this.btnSearch);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.txtEmployee_ID);
+            this.tabPage2.Controls.Add(this.richTextBox1);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Controls.Add(this.dataGridView2);
+            
+
             this.tabPage2.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
             this.tabPage2.Location = new System.Drawing.Point(104, 4);
+
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(602, 411);
@@ -155,18 +186,101 @@ namespace TechArmy
             this.tabPage2.Text = "Clocks";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(265, 113);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 52;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(130, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(293, 46);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "Employee_ID#";
+            // 
+            // txtEmployee_ID
+            // 
+            this.txtEmployee_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmployee_ID.Location = new System.Drawing.Point(430, 24);
+            this.txtEmployee_ID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmployee_ID.Multiline = true;
+            this.txtEmployee_ID.Name = "txtEmployee_ID";
+            this.txtEmployee_ID.Size = new System.Drawing.Size(50, 46);
+            this.txtEmployee_ID.TabIndex = 49;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.AutoWordSelection = true;
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.richTextBox1.ForeColor = System.Drawing.Color.Lime;
+            this.richTextBox1.Location = new System.Drawing.Point(7, 20);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(116, 106);
+            this.richTextBox1.TabIndex = 48;
+            this.richTextBox1.Text = "";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnSubmit);
+            this.groupBox2.Controls.Add(this.txtReasonArea);
+            this.groupBox2.Location = new System.Drawing.Point(510, 20);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(189, 123);
+            this.groupBox2.TabIndex = 50;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Reason";
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(72, 94);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 43;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // txtReasonArea
+            // 
+            this.txtReasonArea.Location = new System.Drawing.Point(3, 19);
+            this.txtReasonArea.Multiline = true;
+            this.txtReasonArea.Name = "txtReasonArea";
+            this.txtReasonArea.Size = new System.Drawing.Size(186, 72);
+            this.txtReasonArea.TabIndex = 44;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(21, 176);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(653, 210);
+            this.dataGridView2.TabIndex = 45;
+            // 
             // tabPage3
             // 
             this.tabPage3.AllowDrop = true;
             this.tabPage3.AutoScroll = true;
+
+            this.tabPage3.Controls.Add(this.cmbFingerID);
+
             this.tabPage3.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
-            this.tabPage3.Controls.Add(this.btnFinger);
+
             this.tabPage3.Controls.Add(this.btnRegister);
             this.tabPage3.Controls.Add(this.txtDataArea);
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Controls.Add(this.txtCellNumber);
             this.tabPage3.Controls.Add(this.lblCellNumber);
-            this.tabPage3.Controls.Add(this.txtFingerID);
             this.tabPage3.Controls.Add(this.lblFingerID);
             this.tabPage3.Controls.Add(this.GenderGroupBox);
             this.tabPage3.Controls.Add(this.txtIDnumber);
@@ -187,19 +301,72 @@ namespace TechArmy
             this.tabPage3.Text = "Register";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btnFinger
+          
+            // cmbFingerID
             // 
-            this.btnFinger.Location = new System.Drawing.Point(335, 157);
-            this.btnFinger.Name = "btnFinger";
-            this.btnFinger.Size = new System.Drawing.Size(75, 23);
-            this.btnFinger.TabIndex = 42;
-            this.btnFinger.Text = "Enroll User";
-            this.btnFinger.UseVisualStyleBackColor = true;
-            this.btnFinger.Click += new System.EventHandler(this.btnFinger_Click);
+            this.cmbFingerID.FormattingEnabled = true;
+            this.cmbFingerID.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50"});
+            this.cmbFingerID.Location = new System.Drawing.Point(110, 274);
+            this.cmbFingerID.Name = "cmbFingerID";
+            this.cmbFingerID.Size = new System.Drawing.Size(184, 21);
+            this.cmbFingerID.TabIndex = 43;
+            this.cmbFingerID.TextChanged += new System.EventHandler(this.cmbFingerID_TextChanged_1);
+            this.cmbFingerID.Validating += new System.ComponentModel.CancelEventHandler(this.cmbFingerID_Validating);
+
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(414, 157);
+            this.btnRegister.Location = new System.Drawing.Point(342, 157);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(75, 23);
             this.btnRegister.TabIndex = 41;
@@ -269,6 +436,7 @@ namespace TechArmy
             this.txtUserPassword.PasswordChar = 'X';
             this.txtUserPassword.Size = new System.Drawing.Size(121, 20);
             this.txtUserPassword.TabIndex = 37;
+            this.txtUserPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtUserPassword_Validating);
             // 
             // txtCellNumber
             // 
@@ -276,6 +444,7 @@ namespace TechArmy
             this.txtCellNumber.Name = "txtCellNumber";
             this.txtCellNumber.Size = new System.Drawing.Size(184, 20);
             this.txtCellNumber.TabIndex = 36;
+            this.txtCellNumber.Validating += new System.ComponentModel.CancelEventHandler(this.txtCellNumber_Validating);
             // 
             // lblCellNumber
             // 
@@ -285,13 +454,6 @@ namespace TechArmy
             this.lblCellNumber.Size = new System.Drawing.Size(64, 13);
             this.lblCellNumber.TabIndex = 35;
             this.lblCellNumber.Text = "Cell Number";
-            // 
-            // txtFingerID
-            // 
-            this.txtFingerID.Location = new System.Drawing.Point(110, 270);
-            this.txtFingerID.Name = "txtFingerID";
-            this.txtFingerID.Size = new System.Drawing.Size(184, 20);
-            this.txtFingerID.TabIndex = 34;
             // 
             // lblFingerID
             // 
@@ -341,6 +503,7 @@ namespace TechArmy
             this.txtIDnumber.Name = "txtIDnumber";
             this.txtIDnumber.Size = new System.Drawing.Size(184, 20);
             this.txtIDnumber.TabIndex = 9;
+            this.txtIDnumber.Validating += new System.ComponentModel.CancelEventHandler(this.txtIDnumber_Validating);
             // 
             // lblNationalID
             // 
@@ -358,6 +521,7 @@ namespace TechArmy
             this.txtPhysicalAddress.Name = "txtPhysicalAddress";
             this.txtPhysicalAddress.Size = new System.Drawing.Size(184, 63);
             this.txtPhysicalAddress.TabIndex = 7;
+            this.txtPhysicalAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhysicalAddress_Validating);
             // 
             // lblPhysicalAddress
             // 
@@ -374,6 +538,7 @@ namespace TechArmy
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(184, 20);
             this.txtEmailAddress.TabIndex = 5;
+            this.txtEmailAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmailAddress_Validating);
             // 
             // lblEmail
             // 
@@ -390,6 +555,7 @@ namespace TechArmy
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(184, 20);
             this.txtSurname.TabIndex = 3;
+            this.txtSurname.Validating += new System.ComponentModel.CancelEventHandler(this.txtSurname_Validating);
             // 
             // lblSurname
             // 
@@ -406,6 +572,7 @@ namespace TechArmy
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.Size = new System.Drawing.Size(184, 20);
             this.txtFirstname.TabIndex = 1;
+            this.txtFirstname.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstname_Validating);
             // 
             // lblFirstname
             // 
@@ -427,6 +594,12 @@ namespace TechArmy
             this.lblLogout.Text = "Logout";
             this.lblLogout.Click += new System.EventHandler(this.lblLogout_Click);
             // 
+
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,12 +617,18 @@ namespace TechArmy
             this.MainMenu.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.GenderGroupBox.ResumeLayout(false);
             this.GenderGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,7 +649,6 @@ namespace TechArmy
         private System.Windows.Forms.Label lblFirstname;
         private System.Windows.Forms.TextBox txtCellNumber;
         private System.Windows.Forms.Label lblCellNumber;
-        private System.Windows.Forms.TextBox txtFingerID;
         private System.Windows.Forms.Label lblFingerID;
         private System.Windows.Forms.GroupBox GenderGroupBox;
         private System.Windows.Forms.RadioButton rbtnFemale;
@@ -490,6 +668,15 @@ namespace TechArmy
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox txtDataArea;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button btnFinger;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ComboBox cmbFingerID;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtEmployee_ID;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.TextBox txtReasonArea;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
