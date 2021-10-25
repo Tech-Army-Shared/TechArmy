@@ -25,18 +25,18 @@ namespace TechArmy
 
         private void btnProceed_Click(object sender, EventArgs e)
         {
-            userLogin();//call method
+            userLogin();
         }
 
         private void userLogin() {
             try
             {
-                string  userType = cmbUserType.SelectedItem.ToString();
+               string  userType = cmbUserType.SelectedItem.ToString();
                string username = txtUsername.Text;
                string password = txtPassword.Text;
 
                 if (userType == "admin")
-                {/*
+                {
                    if (username.Trim() == "" && password.Trim() == "")
                     {
                         MessageBox.Show("Empyt Field, try again ", "Error");
@@ -66,12 +66,12 @@ namespace TechArmy
                             MessageBox.Show("Login Failed, try again ", "Error");
                         }
 
-                    }*/
-                    new AdminForm().Show();
+                    }
+                    //new AdminForm().Show();
                 }
                 else if (userType == "security")
                 {
-                     /* if (username.Trim() == "" && password.Trim() == "")
+                      if (username.Trim() == "" && password.Trim() == "")
                       {
                           MessageBox.Show("Empyt Field, try again ", "Error");
                       }
@@ -101,9 +101,9 @@ namespace TechArmy
                           }
 
                       }
-                      */
+
                      
-                    new SecurityForm().Show();
+                    //new SecurityForm().Show();
                 }
                 else
                 {

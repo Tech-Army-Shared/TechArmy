@@ -1,15 +1,9 @@
 ﻿using System;
 using System.IO.Ports;
-using System.Data;
 using System.Data.SQLite;
 using Microsoft.VisualBasic;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using System.Collections;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Drawing;
-
 
 namespace TechArmy
 {
@@ -17,11 +11,7 @@ namespace TechArmy
     {
         private SQLiteConnection sql_con; //sqlite connection string
         private SQLiteCommand sql_cmd; //Sqlite command
-        private SQLiteDataAdapter DB;
-        private DataSet DS = new DataSet();
-        private DataTable DT = new DataTable();
         private string userID;
-
         public AdminForm()
         {
             InitializeComponent();
@@ -77,7 +67,7 @@ namespace TechArmy
             {
                 btnConnect.Text = "Disconnect";
                 cmbPortName.Enabled = false;
-
+               
             }
         }
         // Call this function to close the port.
@@ -85,30 +75,23 @@ namespace TechArmy
         {
             ComPort.Close();
             btnConnect.Text = "Connect";
-            cmbPortName.Enabled = true;
         }
         //whenever the connect button is clicked, it will check if the port is already open, call the disconnect function.
         // if the port is closed, call the connect function.
-
+     
         private void updatePorts()
         {
             // Retrieve the list of all COM ports on your Computer
             string[] ports = SerialPort.GetPortNames();
-            cmbPortName.Items.Clear();
             foreach (string port in ports)
             {
                 cmbPortName.Items.Add(port);
             }
         }
-
+      
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
-            {
-                MessageBox.Show(txtCellNumber.Text, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            else { }
+           
 
             if (rbtnMale.Checked)
             {
@@ -117,17 +100,17 @@ namespace TechArmy
                 sql_cmd = sql_con.CreateCommand();
                 RegisterUsers("M");
 
-                if (sendData() == 1 & cmbFingerID.SelectedItem.ToString() != "")
+                if (sendData() == 1 & txtFingerID.Text != "")
                 {
-                    // sendID();
+                   // sendID();
                     sql_cmd.ExecuteNonQuery();
 
 
-                    String sql = "SELECT * FROM registration WHERE fingerID='" + cmbFingerID.SelectedItem.ToString() + "'";
+                    String sql = "SELECT * FROM registration WHERE fingerID='" + txtFingerID.Text + "'";
                     var cmd2 = new SQLiteCommand(sql, sql_con);
                     SQLiteDataReader rdr2 = cmd2.ExecuteReader();
                     rdr2.Read();
-                    // MessageBox.Show("You went out for lunch\n@: " + rdr2.GetString(1));
+                   // MessageBox.Show("You went out for lunch\n@: " + rdr2.GetString(1));
 
                     int id = rdr2.GetInt32(0);
 
@@ -150,7 +133,7 @@ namespace TechArmy
                 else
                 {
                     MessageBox.Show("Communication Error!!\n Registering again...please wait");
-
+                  
                 }
                 sql_con.Close();
             }
@@ -161,13 +144,13 @@ namespace TechArmy
                 sql_cmd = sql_con.CreateCommand();
                 RegisterUsers("F");
 
-                if (sendData() == 1 & cmbFingerID.SelectedItem.ToString() != "")
+                if (sendData() == 1 & txtFingerID.Text != "")
                 {
                     //sendID();
                     sql_cmd.ExecuteNonQuery();//
 
 
-                    String sql = "SELECT * FROM registration WHERE fingerID='" + cmbFingerID.SelectedItem.ToString() + "'";
+                    String sql = "SELECT * FROM registration WHERE fingerID='" + txtFingerID.Text + "'";
                     var cmd2 = new SQLiteCommand(sql, sql_con);
                     SQLiteDataReader rdr2 = cmd2.ExecuteReader();
                     rdr2.Read();
@@ -191,10 +174,9 @@ namespace TechArmy
 
                     sql_con.Close();
                 }
-                else
-                {
+                else {
                     MessageBox.Show("Communication Error!!\n Registering again...please wait");
-
+                   
                 }
 
 
@@ -202,8 +184,7 @@ namespace TechArmy
 
         }
 
-        private void RegisterUsers(String g)
-        {
+        private void RegisterUsers(String g) {
             string strDate = $"{DateTime.Now:dd/MM/yy - HH:mm:ss}";
 
             sql_cmd.CommandText = "INSERT INTO registration (firstName,lastName, cellNumber, emailAddress, physicalAddress,nationalID, gender,fingerID,regDate)" +
@@ -215,7 +196,7 @@ namespace TechArmy
             sql_cmd.Parameters.AddWithValue("@physicalAddress", txtPhysicalAddress.Text);
             sql_cmd.Parameters.AddWithValue("@nationalID", txtIDnumber.Text);
             sql_cmd.Parameters.AddWithValue("@gender", g);
-            sql_cmd.Parameters.AddWithValue("@fingerID", cmbFingerID.SelectedItem.ToString());
+            sql_cmd.Parameters.AddWithValue("@fingerID", txtFingerID.Text);
             sql_cmd.Parameters.AddWithValue("@regDate", strDate);
             sql_cmd.Prepare();
         }
@@ -229,28 +210,28 @@ namespace TechArmy
         // Function to send data to the serial port
         private void sendID()
         {
-
+         
             bool error = false;
             if (true)        //if text mode is selected, send data as tex
             {
                 // Send the user's text straight out the port 
-                ComPort.Write(cmbFingerID.SelectedItem.ToString());
+                ComPort.Write(txtFingerID.Text);
 
                 // Show in the terminal window 
                 // txtDataArea.ForeColor = Color.Green;    //write sent text data in green colour              
                 //txtSend.Clear();                       //clear screen after sending data
-
+               
             }
             else                    //if Hex mode is selected, send data in hexadecimal
             {
                 try
                 {
                     // Convert the user's string of hex digits (example: E1 FF 1B) to a byte array
-                    byte[] data = HexStringToByteArray(cmbFingerID.SelectedItem.ToString());
+                    byte[] data = HexStringToByteArray(txtFingerID.Text);
 
                     // Send the binary data out the port
                     ComPort.Write(data, 0, data.Length);
-
+                  
                     // Show the hex digits on in the terminal window
                     //  rtxtDataArea.ForeColor = Color.Blue;   //write Hex data in Blue
                     //  rtxtDataArea.AppendText(txtSend.Text.ToUpper() + "\n");
@@ -261,20 +242,19 @@ namespace TechArmy
                 // Inform the user if the hex string was not properly formatted
                 catch (ArgumentException) { error = true; }
 
-                if (error) MessageBox.Show(this, "Not properly formatted hex string: " + "r" + "\n" + "example: E1 FF 1B", "Format Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                if (error) MessageBox.Show(this, "Not properly formatted hex string: " + "r" + "\n" + "example: E1 FF 1B", "Format Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); 
 
             }
 
-
+          
 
 
         }
         private int sendData()
         {
-
-            String IDrecieved = userID, currentID = cmbFingerID.SelectedItem.ToString();
-            bool error = false;
-
+            
+           String IDrecieved = userID, currentID = txtFingerID.Text;
+           bool error = false;
            
             if (true)        //if text mode is selected, send data as tex
             {
@@ -284,21 +264,20 @@ namespace TechArmy
                 // Show in the terminal window 
                 // txtDataArea.ForeColor = Color.Green;    //write sent text data in green colour              
                 //txtSend.Clear();                       //clear screen after sending data
-                sendID(); //Enroll Finger process began
-                return 1;
-                /*  for(int i = 1; i<=10; i++)
+                  sendID(); //Enroll Finger process began
+              for(int i = 1; i<=10; i++)
+                {
+                    IDrecieved = userID;
+                    if (IDrecieved == currentID)
                     {
-                        IDrecieved = userID;
-                        if (IDrecieved == currentID)
-                        {
-                            return 1; //break;
-                        }
-
+                        return 1; //break;
                     }
-                    return 0;*/
+
+                }
+                return 0;
 
 
-
+               
             }
             else                    //if Hex mode is selected, send data in hexadecimal
             {
@@ -309,8 +288,8 @@ namespace TechArmy
 
                     // Send the binary data out the port
                     ComPort.Write(data, 0, data.Length);
-
-                    sendID(); //Enroll Finger process began
+                   
+                sendID(); //Enroll Finger process began
                     for (int i = 1; i <= 10; i++)
                     {
                         IDrecieved = userID;
@@ -327,12 +306,12 @@ namespace TechArmy
                     //  rtxtDataArea.AppendText(txtSend.Text.ToUpper() + "\n");
                     //  txtSend.Clear();                       //clear screen after sending data
                 }
-                catch (FormatException) { error = true; }
+            catch (FormatException) { error = true; }
 
                 // Inform the user if the hex string was not properly formatted
                 catch (ArgumentException) { error = true; }
 
-                if (error) MessageBox.Show(this, "Not properly formatted hex string: " + "r" + "\n" + "example: E1 FF 1B", "Format Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return 0;
+                if (error) MessageBox.Show(this, "Not properly formatted hex string: " + "r" + "\n" + "example: E1 FF 1B", "Format Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);return 0;
             }
 
 
@@ -364,14 +343,14 @@ namespace TechArmy
             }
             else
             {
-                this.txtDataArea.Text += text;
-                // this.txtDataArea.AppendText(text);
+                this.txtDataArea.Text +=text;
+               // this.txtDataArea.AppendText(text);
                 string[] RichTextBoxLines = txtDataArea.Lines;
 
                 try
                 {
                     userID = RichTextBoxLines[txtDataArea.Lines.Length - 2];
-                    // MessageBox.Show(userID);
+                   // MessageBox.Show(userID);
                 }
                 catch { }
 
@@ -393,7 +372,7 @@ namespace TechArmy
 
         private void btnRefresh_Click_1(object sender, EventArgs e)
         {
-            updatePorts(); MessageBox.Show("refreshed", "Alert", MessageBoxButtons.OKCancel);
+            updatePorts();MessageBox.Show("refreshed","Hi",MessageBoxButtons.OKCancel);
         }
 
         private void btnConnect_Click_1(object sender, EventArgs e)
@@ -416,8 +395,7 @@ namespace TechArmy
 
         private void btnFinger_Click(object sender, EventArgs e)
         {
-            if (cmbFingerID.SelectedItem.ToString() == null || cmbFingerID.SelectedItem.ToString() == "")
-            {
+            if (txtFingerID.Text == null || txtFingerID.Text == "") {
                 string message, title, defaultValue;
                 string myValue;
                 // Set prompt.
@@ -431,303 +409,18 @@ namespace TechArmy
                 {
                     myValue = defaultValue;
 
-                    // MessageBox.Show(myValue);
+                    MessageBox.Show(myValue);
 
 
 
                 }
                 else
                 {
-                    // MessageBox.Show(myValue);
+                    MessageBox.Show(myValue);
 
                 }
             }
         }
-
-
-        private void txtFirstname_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtFirstname.Text))
-            {
-                e.Cancel = true;
-                txtFirstname.Focus();
-                errorProvider.SetError(txtFirstname, "Please enter your firstname !");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtFirstname, null);
-            }
-        }
-
-        private void txtSurname_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtSurname.Text))
-            {
-                e.Cancel = true;
-                txtFirstname.Focus();
-                errorProvider.SetError(txtSurname, "Please enter your Surname !");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtSurname, null);
-            }
-        }
-
-        private void txtCellNumber_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txtCellNumber.Text.Length < 10)
-            {
-                e.Cancel = true;
-                txtFirstname.Focus();
-                errorProvider.SetError(txtCellNumber, "Please enter a valid 10 digit Cellnumber");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtCellNumber, null);
-            }
-        }
-
-        private void txtEmailAddress_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
-            Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
-
-            if (!regex.IsMatch(txtEmailAddress.Text))
-            {
-                e.Cancel = true;
-                txtFirstname.Focus();
-                errorProvider.SetError(txtEmailAddress, "Please enter a valid email address");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtEmailAddress, null);
-            }
-        }
-
-        private void txtPhysicalAddress_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtPhysicalAddress.Text))
-            {
-                e.Cancel = true;
-                txtFirstname.Focus();
-                errorProvider.SetError(txtPhysicalAddress, "Required.");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtPhysicalAddress, null);
-            }
-        }
-
-        private void txtIDnumber_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txtIDnumber.Text.Length < 13)
-            {
-                e.Cancel = true;
-                txtFirstname.Focus();
-                errorProvider.SetError(txtIDnumber, "A 13 digit ID is needed.");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtIDnumber, null);
-            }
-        }
-
-        private void comboBox1_TextChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show(cmbFingerID.SelectedItem.ToString());
-        }
-
-        private void cmbFingerID_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(cmbFingerID.SelectedItem.ToString()))
-            {
-                e.Cancel = true;
-                txtFirstname.Focus();
-                errorProvider.SetError(cmbFingerID, "Please select an ID");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(cmbFingerID, null);
-            }
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(txtEmployee_ID.Text))
-            {
-                SetConnection();
-                sql_con.Open();
-                string CommandTxt = "SELECT userID,time1,time2,time3,time4,reason,date FROM datasheet  WHERE userID ='" + txtEmployee_ID.Text + "'";
-                DB = new SQLiteDataAdapter(CommandTxt, sql_con);
-                DS.Reset();
-                DB.Fill(DS);
-                DT = DS.Tables[0];
-                dataGridView2.DataSource = DT;
-                DataTable dt = new DataTable();
-                DB.Fill(dt);
-              
-                countHours();
-                sql_con.Close();
-            }
-        }
-
-        void countHours()
-        {
-            SetConnection();
-            sql_con.Open();
-            string CommandTxt = "SELECT userID,time1,time2,time3,time4,reason,date FROM datasheet  WHERE userID ='" + txtEmployee_ID.Text + "'";
-            var cmd = new SQLiteCommand(CommandTxt, sql_con);
-            SQLiteDataReader rdr = cmd.ExecuteReader();
-            List<string> times = new List<string>();
-            TimeSpan tot = TimeSpan.Zero;
-
-            int c = 1;
-            while (rdr.Read())
-            {
-               // MessageBox.Show(rdr.GetString(1));
-
-                if (rdr.GetString(4) != "n/a")
-                {
-                    var time1 = rdr.GetString(1);
-                    var time2 = rdr.GetString(4);
-
-                    var timeParts = time1.Split(new char[1] { ':' });
-                    var timeParts2 = time2.Split(new char[1] { ':' });
-
-                    var dateNow = DateTime.Now;
-
-                    var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
-                                int.Parse(timeParts[0]), int.Parse(timeParts[1]), int.Parse(timeParts[2]));
-                    var date2 = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
-                                int.Parse(timeParts2[0]), int.Parse(timeParts2[1]), int.Parse(timeParts2[2]));
-
-                    TimeSpan ts = date - date2;
-
-                    times.Add(ts.Duration().ToString());
-                        //MessageBox.Show($"row{c}\nHours: {ts.Duration()}");
-                    
-                    
-                    
-
-
-                }
-                else {
-
-                    if (rdr.GetString(3) != "n/a")
-                    {
-                        var time1 = rdr.GetString(1);
-                        var time2 = rdr.GetString(3);
-
-                        var timeParts = time1.Split(new char[1] { ':' });
-                        var timeParts2 = time2.Split(new char[1] { ':' });
-
-                        var dateNow = DateTime.Now;
-
-                        var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
-                                    int.Parse(timeParts[0]), int.Parse(timeParts[1]), int.Parse(timeParts[2]));
-                        var date2 = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
-                                    int.Parse(timeParts2[0]), int.Parse(timeParts2[1]), int.Parse(timeParts2[2]));
-
-                        TimeSpan ts = date - date2;
-
-
-                        //MessageBox.Show($"row{c}\nHours: {ts.Duration()}");
-                        times.Add(ts.Duration().ToString());
-
-                    }
-                    else
-                    {
-                        if (rdr.GetString(2) != "n/a")
-                        {
-                            var time1 = rdr.GetString(1);
-                            var time2 = rdr.GetString(2);
-
-                            var timeParts = time1.Split(new char[1] { ':' });
-                            var timeParts2 = time2.Split(new char[1] { ':' });
-
-                            var dateNow = DateTime.Now;
-
-                            var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
-                                        int.Parse(timeParts[0]), int.Parse(timeParts[1]), int.Parse(timeParts[2]));
-                            var date2 = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
-                                        int.Parse(timeParts2[0]), int.Parse(timeParts2[1]), int.Parse(timeParts2[2]));
-
-                            TimeSpan ts = date - date2;
-                            times.Add(ts.Duration().ToString());
-
-                            // MessageBox.Show($"row{c}\nHours: {ts.Duration()}");
-
-
-                        }
-                        else
-                        {
-                            if (rdr.GetString(1) != "n/a")
-                            {
-                                var time1 = rdr.GetString(1);
-                                var time2 = rdr.GetString(1);
-
-                                var timeParts = time1.Split(new char[1] { ':' });
-                                var timeParts2 = time2.Split(new char[1] { ':' });
-
-                                var dateNow = DateTime.Now;
-
-                                var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
-                                            int.Parse(timeParts[0]), int.Parse(timeParts[1]), int.Parse(timeParts[2]));
-                                var date2 = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
-                                            int.Parse(timeParts2[0]), int.Parse(timeParts2[1]), int.Parse(timeParts2[2]));
-
-                                TimeSpan ts = date - date2;
-
-                                times.Add(ts.Duration().ToString());
-                                // MessageBox.Show($"row{c}\nHours: {ts.Duration()}");
-
-
-                            }
-                            else
-                            {
-
-                                MessageBox.Show($"Not found.");
-                            }
-
-
-                        }
-
-
-                    }
-
-                }
-                c++;
-            }
-
-            foreach (var time in times)
-            {
-              
-             
-                    TimeSpan hourcant = TimeSpan.Parse(time);
-                    tot += hourcant;
-                
-
-            }
-
-            MessageBox.Show($"ID#{txtEmployee_ID.Text}\nTotal Timespan:\n{tot.Duration()}");
-
-            rdr.Close(); sql_con.Close();
-
-        }
-
-
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
