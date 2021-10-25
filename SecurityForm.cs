@@ -172,14 +172,6 @@ namespace TechArmy
                     {
                         this.txtDataArea.Text += text.Trim();
 
-                        //this.txtDataArea.AppendText(text);
-
-
-
-                        // userID = RichTextBoxLines[txtDataArea.Lines.Length - 2];
-
-                      
-
                         }
                 }
                 catch { }
@@ -206,14 +198,15 @@ namespace TechArmy
             DT = DS.Tables[0];
             dataGridView2.DataSource = DT;
             sql_con.Close();
+
             var work = new Thread(workerThread);
             work.Name = "Worker thread";
             work.Start();
         }
 
-      void workerThread( ) {
+        void workerThread( ) {
 
-            var DailyTime = "03:18:00";
+            var DailyTime = "10:36:00";
             var timeParts = DailyTime.Split(new char[1] { ':' });
             while (true)
             {
@@ -275,7 +268,7 @@ namespace TechArmy
                 try
                 {
                     rdr.Read();
-                    id = rdr.GetInt32(0);
+                    id = rdr.GetInt32(0); //EmployeeID
                     txtEmployee_ID.Text = id.ToString();
                     rdr.Close();
 
@@ -289,11 +282,10 @@ namespace TechArmy
                     sql_cmd.Parameters.AddWithValue("@clock", strDateTime);
                     sql_cmd.Parameters.AddWithValue("@date", strDate);
                     sql_cmd.Prepare();
-                    sql_cmd.ExecuteNonQuery();//bug
+                    sql_cmd.ExecuteNonQuery();//Clocking In
                 }
                 catch
                 {
-                    // MessageBox.Show("Good Morning.");
                     String sql = "SELECT * FROM userLogs WHERE userID = '" + id + "'";
                     var cmd2 = new SQLiteCommand(sql, sql_con);
                     SQLiteDataReader rdr2 = cmd2.ExecuteReader();
@@ -301,98 +293,29 @@ namespace TechArmy
                     try
                     {
 
-                        // MessageBox.Show("You went out for lunch\n@: " + rdr2.GetString(3));// bug2 
-                        rdr2.GetString(3);
+                        rdr2.GetString(3); //Lunch Out
                         try
                         {
-                            // MessageBox.Show("You came back from lunch\n@: " + rdr2.GetString(4));//bug3
-                            rdr2.GetString(4);
-                            lunchIN = rdr2.GetString(4);
+                            rdr2.GetString(4);//Lunch In
+                            
                             try
                             {
-                                //MessageBox.Show("You left\n@: " + rdr2.GetString(5));//bug4
-                                rdr2.GetString(5);
+                                rdr2.GetString(5);//Clocking Out
 
-                                try { 
-                                    rdr2.GetString(6);
-                                    /*Appendy(id, rdr2.GetString(2), rdr2.GetString(3), rdr2.GetString(4), rdr2.GetString(5), rdr2.GetString(6), rdr2.GetString(7));
-
-                                    sql_cmd.CommandText = "INSERT INTO datasheet ('userID','time1','time2','time3','time4','reason','date') VALUES(@userID,@time1,@time2,@time3,@time4,@reason,@date)";
-                                    sql_cmd.Parameters.AddWithValue("@userID", id);
-                                    sql_cmd.Parameters.AddWithValue("@time1", rdr2.GetString(2));
-                                    sql_cmd.Parameters.AddWithValue("@time2", rdr2.GetString(3));
-                                    sql_cmd.Parameters.AddWithValue("@time3", rdr2.GetString(4));
-                                    sql_cmd.Parameters.AddWithValue("@time4", rdr2.GetString(5));
-                                    sql_cmd.Parameters.AddWithValue("@reason", rdr2.GetString(6));
-                                    sql_cmd.Parameters.AddWithValue("@date", rdr2.GetString(7));
-                                    sql_cmd.Prepare();
-                                    sql_cmd.ExecuteNonQuery();
-
-                                    sql_cmd.CommandText = "DELETE FROM userLogs WHERE userID=@uID";
-                                    sql_cmd.Parameters.AddWithValue("@uID", id);
-                                    sql_cmd.Prepare();
-                                    sql_cmd.ExecuteNonQuery();*/
-
-                                } catch {
-
-                                    /*Appendy(id, rdr2.GetString(2), rdr2.GetString(3), rdr2.GetString(4), rdr2.GetString(5), "n/a", rdr2.GetString(7));
-
-                                    sql_cmd.CommandText = "INSERT INTO datasheet ('userID','time1','time2','time3','time4','reason','date') VALUES(@userID,@time1,@time2,@time3,@time4,@reason,@date)";
-                                    sql_cmd.Parameters.AddWithValue("@userID", id);
-                                    sql_cmd.Parameters.AddWithValue("@time1", rdr2.GetString(2));
-                                    sql_cmd.Parameters.AddWithValue("@time2", rdr2.GetString(3));
-                                    sql_cmd.Parameters.AddWithValue("@time3", rdr2.GetString(4));
-                                    sql_cmd.Parameters.AddWithValue("@time4", rdr2.GetString(5));
-                                    sql_cmd.Parameters.AddWithValue("@reason", "n/a");
-                                    sql_cmd.Parameters.AddWithValue("@date", rdr2.GetString(7));
-                                    sql_cmd.Prepare();
-                                    sql_cmd.ExecuteNonQuery();
-
-                                    sql_cmd.CommandText = "DELETE FROM userLogs WHERE userID=@uID";
-                                    sql_cmd.Parameters.AddWithValue("@uID", id);
-                                    sql_cmd.Prepare();
-                                    sql_cmd.ExecuteNonQuery();*/
-                                }
-                                //Appendy(rdr2.GetInt32(1), rdr2.GetString(2), rdr2.GetString(3), rdr2.GetString(4), rdr2.GetString(5), rdr2.GetString(7));
-
-
-                                /*  Appendy(id, rdr2.GetString(2), rdr2.GetString(3), rdr2.GetString(4), rdr2.GetString(5), "n/a", rdr2.GetString(7));
-                                  sql_cmd.CommandText = "DELETE FROM userLogs WHERE userID=@uID";
-                                  sql_cmd.Parameters.AddWithValue("@uID", id);
-                                  sql_cmd.Prepare();
-                                  sql_cmd.ExecuteNonQuery();*/
-
-
-
-
-
-                                //  sql_cmd.CommandText = "INSERT INTO datasheet('userID','time1','time2','time3','time4','reason','date') VALUES(@)";
-                                //     "" +
-                                //     "'" + id+"','"+ rdr2.GetString(2) + "','"+ rdr2.GetString(3) + "','"+ rdr2.GetString(4) + "','"+ rdr2.GetString(5) + "','hh','"+ rdr2.GetString(7) + "')";
-                                //   sql_cmd.Prepare();
-                                //   sql_cmd.ExecuteNonQuery();
-
-                                // sql_cmd.CommandText = "DELETE FROM userLogs WHERE userID = '" + id + "'";
-                                // sql_cmd.Prepare();
-                                // sql_cmd.ExecuteNonQuery();
+                            
                             }
                             catch
                             {
-                                //MessageBox.Show("Good Afternoon.");
 
                                 sql_cmd.CommandText = "UPDATE userLogs SET clockOUT = @ClockOUT WHERE userID = '" + id + "'";
                                 sql_cmd.Parameters.AddWithValue("@ClockOUT", strDateTime);
                                 sql_cmd.Prepare();
                                 sql_cmd.ExecuteNonQuery();
-                               
-
-
-
+                        
                             }
                         }
                         catch
                         {
-                            //  MessageBox.Show("Coming Back from lunch.");
                             sql_cmd.CommandText = "UPDATE userLogs SET lunchIN = @LunchIN WHERE userID = '" + id + "'";
                             sql_cmd.Parameters.AddWithValue("@LunchIN", strDateTime);
                             sql_cmd.Prepare();
@@ -401,7 +324,6 @@ namespace TechArmy
                     }
                     catch
                     {
-                        // MessageBox.Show("Going to lunch.");
                         if (sql_cmd != null)
                         {
                             sql_cmd.CommandText = "UPDATE userLogs SET lunchOUT = @LunchOUT WHERE userID = '" + id + "'";
@@ -467,7 +389,7 @@ namespace TechArmy
             SQLiteDataReader rdr = cmd.ExecuteReader();
             SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
             DataTable dt = new DataTable();
-            da.Fill(dt);
+            //da.Fill(dt);
            
             while (rdr.Read())
             {

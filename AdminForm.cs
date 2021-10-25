@@ -491,12 +491,14 @@ namespace TechArmy
 
             if (!regex.IsMatch(txtEmailAddress.Text))
             {
+                //If not match
                 e.Cancel = true;
                 txtFirstname.Focus();
                 errorProvider.SetError(txtEmailAddress, "Please enter a valid email address");
             }
             else
             {
+                //its a match
                 e.Cancel = false;
                 errorProvider.SetError(txtEmailAddress, null);
             }
@@ -532,14 +534,13 @@ namespace TechArmy
             }
         }
 
-        private void comboBox1_TextChanged(object sender, EventArgs e)
+        private void cmbFingerID_TextChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(cmbFingerID.SelectedItem.ToString());
         }
 
         private void cmbFingerID_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(cmbFingerID.SelectedItem.ToString()))
+            /*if (string.IsNullOrEmpty(cmbFingerID.SelectedItem.ToString()))
             {
                 e.Cancel = true;
                 txtFirstname.Focus();
@@ -549,7 +550,7 @@ namespace TechArmy
             {
                 e.Cancel = false;
                 errorProvider.SetError(cmbFingerID, null);
-            }
+            }*/
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -718,7 +719,17 @@ namespace TechArmy
             MessageBox.Show($"ID#{txtEmployee_ID.Text}\nTotal Timespan:\n{tot.Duration()}");
 
             rdr.Close(); sql_con.Close();
+        }
 
+        private void txtUserPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void cmbFingerID_TextChanged_1(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Index: {cmbFingerID.SelectedIndex.ToString()}\nValue: {cmbFingerID.SelectedItem.ToString()}");
+            cmbFingerID.Items.RemoveAt(cmbFingerID.SelectedIndex);
         }
     }
 }
