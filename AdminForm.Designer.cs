@@ -31,6 +31,7 @@ namespace TechArmy
         {
             this.components = new System.ComponentModel.Container();
             this.Menu = new System.Windows.Forms.TabControl();
+
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.btnConnect = new System.Windows.Forms.Button();
@@ -39,7 +40,9 @@ namespace TechArmy
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+
             this.cmbFingerID = new System.Windows.Forms.ComboBox();
+
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtDataArea = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -64,6 +67,7 @@ namespace TechArmy
             this.txtFirstname = new System.Windows.Forms.TextBox();
             this.lblFirstname = new System.Windows.Forms.Label();
             this.lblLogout = new System.Windows.Forms.Label();
+
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.txtEmployee_ID = new System.Windows.Forms.TextBox();
@@ -73,6 +77,7 @@ namespace TechArmy
             this.txtReasonArea = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.Menu.SuspendLayout();
+
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -83,30 +88,35 @@ namespace TechArmy
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Menu
+            // MainMenu
             // 
-            this.Menu.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.Menu.Controls.Add(this.tabPage1);
-            this.Menu.Controls.Add(this.tabPage2);
-            this.Menu.Controls.Add(this.tabPage3);
-            this.Menu.Location = new System.Drawing.Point(10, 29);
-            this.Menu.Multiline = true;
-            this.Menu.Name = "Menu";
-            this.Menu.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Menu.SelectedIndex = 0;
-            this.Menu.Size = new System.Drawing.Size(710, 419);
-            this.Menu.TabIndex = 0;
+            this.MainMenu.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.MainMenu.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.MainMenu.Controls.Add(this.tabPage1);
+            this.MainMenu.Controls.Add(this.tabPage2);
+            this.MainMenu.Controls.Add(this.tabPage3);
+            this.MainMenu.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.MainMenu.ItemSize = new System.Drawing.Size(25, 100);
+            this.MainMenu.Location = new System.Drawing.Point(10, 29);
+            this.MainMenu.Multiline = true;
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.MainMenu.SelectedIndex = 0;
+            this.MainMenu.Size = new System.Drawing.Size(710, 419);
+            this.MainMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.MainMenu.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.btnConnect);
             this.tabPage1.Controls.Add(this.btnRefresh);
             this.tabPage1.Controls.Add(this.cmbPortName);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(104, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(702, 393);
+            this.tabPage1.Size = new System.Drawing.Size(602, 411);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Connect";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -154,6 +164,7 @@ namespace TechArmy
             // 
             // tabPage2
             // 
+
             this.tabPage2.Controls.Add(this.btnSearch);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.txtEmployee_ID);
@@ -161,9 +172,12 @@ namespace TechArmy
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
+
+            this.tabPage2.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
+
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(702, 393);
+            this.tabPage2.Size = new System.Drawing.Size(602, 411);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Clocks";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -181,7 +195,11 @@ namespace TechArmy
             // 
             this.tabPage3.AllowDrop = true;
             this.tabPage3.AutoScroll = true;
+
             this.tabPage3.Controls.Add(this.cmbFingerID);
+
+            this.tabPage3.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
+
             this.tabPage3.Controls.Add(this.btnRegister);
             this.tabPage3.Controls.Add(this.txtDataArea);
             this.tabPage3.Controls.Add(this.groupBox1);
@@ -199,14 +217,15 @@ namespace TechArmy
             this.tabPage3.Controls.Add(this.lblSurname);
             this.tabPage3.Controls.Add(this.txtFirstname);
             this.tabPage3.Controls.Add(this.lblFirstname);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(104, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(702, 393);
+            this.tabPage3.Size = new System.Drawing.Size(602, 411);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Register";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+
             // cmbFingerID
             // 
             this.cmbFingerID.FormattingEnabled = true;
@@ -267,6 +286,7 @@ namespace TechArmy
             this.cmbFingerID.TabIndex = 43;
             this.cmbFingerID.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             this.cmbFingerID.Validating += new System.ComponentModel.CancelEventHandler(this.cmbFingerID_Validating);
+
             // 
             // btnRegister
             // 
@@ -497,6 +517,7 @@ namespace TechArmy
             this.lblLogout.Text = "Logout";
             this.lblLogout.Click += new System.EventHandler(this.lblLogout_Click);
             // 
+
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
@@ -573,19 +594,22 @@ namespace TechArmy
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+          
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
             this.ClientSize = new System.Drawing.Size(736, 463);
             this.Controls.Add(this.lblLogout);
-            this.Controls.Add(this.Menu);
+            this.Controls.Add(this.MainMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
-            this.Menu.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.AdminForm_Load);
+            this.MainMenu.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -607,7 +631,7 @@ namespace TechArmy
 
         #endregion
 
-        private System.Windows.Forms.TabControl Menu;
+        private System.Windows.Forms.TabControl MainMenu;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
