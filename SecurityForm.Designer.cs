@@ -62,7 +62,7 @@ namespace TechArmy
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(798, 417);
+            this.tabControl1.Size = new System.Drawing.Size(899, 417);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             // 
@@ -124,22 +124,17 @@ namespace TechArmy
             // 
             // tabPage2
             // 
-
+            this.tabPage2.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.txtEmployee_ID);
             this.tabPage2.Controls.Add(this.txtDataArea);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
-
-            this.tabPage2.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
-
             this.tabPage2.Location = new System.Drawing.Point(104, 4);
-
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(690, 409);
+            this.tabPage2.Size = new System.Drawing.Size(791, 409);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Clocks";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -233,17 +228,14 @@ namespace TechArmy
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-
             this.BackgroundImage = global::TechArmy.Properties.Resources.Background_Image;
-            this.ClientSize = new System.Drawing.Size(816, 450);
-
+            this.ClientSize = new System.Drawing.Size(916, 450);
             this.Controls.Add(this.lblLogout);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SecurityForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SecurityForm";
-        //    this.Load += new System.EventHandler(this.SecurityForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
